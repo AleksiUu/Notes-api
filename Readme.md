@@ -12,8 +12,10 @@ npm install
 
 ## Usage
 
+To test functions locally
+
 ```bash
-TODO
+serverless invoke local --function ${FUNCTION_NAME} --path mocks/${FUNCTION_MOCK}
 ```
 
 ## License
