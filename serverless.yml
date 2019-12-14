@@ -14,21 +14,21 @@ provider:
   stage: dev
   region: eu-west-1
 
-environment:
-  tableName: notes
-  stripeSecretKey: ${env:STRIPE_SECRET_KEY}
+  environment:
+    tableName: notes
+    stripeSecretKey: ${env:STRIPE_SECRET_KEY}
 
-iamRoleStatements:
-  - Effect: Allow
-    Action:
-      - dynamodb:DescribeTable
-      - dynamodb:Query
-      - dynamodb:Scan
-      - dynamodb:GetItem
-      - dynamodb:PutItem
-      - dynamodb:UpdateItem
-      - dynamodb:DeleteItem
-    Resource: "arn:aws:dynamodb:eu-west-1:679830651549:*"
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - dynamodb:DescribeTable
+        - dynamodb:Query
+        - dynamodb:Scan
+        - dynamodb:GetItem
+        - dynamodb:PutItem
+        - dynamodb:UpdateItem
+        - dynamodb:DeleteItem
+      Resource: "arn:aws:dynamodb:eu-west-1:*:*"
 
 functions:
   create:
@@ -39,6 +39,7 @@ functions:
           method: post
           cors: true
           authorizer: aws_iam
+
   get:
     handler: get.main
     events:
@@ -47,6 +48,7 @@ functions:
           method: get
           cors: true
           authorizer: aws_iam
+
   list:
     handler: list.main
     events:
@@ -55,6 +57,7 @@ functions:
           method: get
           cors: true
           authorizer: aws_iam
+
   update:
     handler: update.main
     events:
@@ -63,6 +66,7 @@ functions:
           method: put
           cors: true
           authorizer: aws_iam
+
   delete:
     handler: delete.main
     events:
@@ -71,6 +75,7 @@ functions:
           method: delete
           cors: true
           authorizer: aws_iam
+
   billing:
     handler: billing.main
     events:
