@@ -26,3 +26,4 @@ test("Storage for more that 100 notes", () => {
 
   expect(cost).toEqual(expectedCost);
 });
+//test
